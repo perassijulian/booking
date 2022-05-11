@@ -1,31 +1,44 @@
-import './featured.css';
+import "./featured.css";
 
 const Featured = () => {
   return (
-    <div className='featured'>
-        <div className='featuredItem'>
-            <img src='https://cf.bstatic.com/xdata/images/city/square250/664109.webp?k=a8175b074619f9dd16218eac4068dc403c1c1ff2918aaf6590f98fd4d5c9322a&o=' className='itemImg' alt='featured'/>
-            <div className='featuredTitles'>
-                <h1>El calafate</h1>
-                <h2>252 properties</h2>
-            </div>
+    <div className="featured">
+      <div className="featuredItem">
+        <img
+          src="https://cf.bstatic.com/xdata/images/city/540x270/664049.webp?k=fd691141ae6bdd6048ca0095f5d9bec810f571654be41c9bd556d645a474b025&o="
+          alt=""
+          className="featuredImg"
+        />
+        <div className="featuredTitles">
+          <h1>Buenos Aires</h1>
+          <h2>2.123 properties</h2>
         </div>
-        <div className='featuredItem'>
-            <img src='https://cf.bstatic.com/xdata/images/city/square250/664052.webp?k=e0c8a97ea4cd0ab7e3757392c8fb02708767377e288a6c3e0889d22497e8e8f1&o=' className='itemImg' alt='featured'/>
-            <div className='featuredTitles'>
-                <h1>Buenos Aires</h1>
-                <h2>2.352 properties</h2>
-            </div>
+      </div>
+      
+      <div className="featuredItem">
+        <img
+          src="https://cf.bstatic.com/xdata/images/city/540x270/640201.webp?k=942136439541853a5782cc72453476a8aac47bc394c88a353175a2030ac523bc&o="
+          alt=""
+          className="featuredImg"
+        />
+        <div className="featuredTitles">
+          <h1>Puerto Madryn</h1>
+          <h2>533 properties</h2>
         </div>
-        <div className='featuredItem'>
-            <img src='https://cf.bstatic.com/xdata/images/city/square250/664442.webp?k=b3b40288facb1bf74fa0124e88d99fa474360b7ad0372fa1101ef16cdc3276e7&o=' className='itemImg' alt='featured'/>
-            <div className='featuredTitles'>
-                <h1>San Martín de los Andes</h1>
-                <h2>552 properties</h2>
-            </div>
+      </div>
+      <div className="featuredItem">
+        <img
+          src="https://cf.bstatic.com/xdata/images/city/540x270/664105.webp?k=1b18e8252c861c11c20c662158441b67bccf92ab0ad69ef49dda87d4ccb6f924&o="
+          alt=""
+          className="featuredImg"
+        />
+        <div className="featuredTitles">
+          <h1>El calafate</h1>
+          <h2>532 properties</h2>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Featured
+export default Featured;

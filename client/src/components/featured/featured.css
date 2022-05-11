@@ -3,25 +3,27 @@
     max-width: 1024px;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-}
-
-.featuredItem{
-    border-radius: 5px;
-    overflow: hidden;
+    gap: 20px;
+    z-index: 1;
+  }
+  
+  .featuredItem{
     position: relative;
     color: white;
-}
-
-.itemImg{
-    object-fit: cover;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
+    flex:1
+  }
+  
+  .featuredImg{
     width: 100%;
-}
-
-.featuredTitles{
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .featuredTitles{
     position: absolute;
-    bottom: 10px;
-    h1{
-        font-size: 15px;
-    }
-}
+    bottom: 20px;
+    left: 20px;
+  }
