@@ -1,0 +1,48 @@
+.header{
+    background-color: #003580;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.headerContainer{
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0 100px 0;
+
+}
+
+.headerList{
+    display: flex;
+    gap: 25px;
+}
+
+.headerListItem{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.headerListItem.active{
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.headerTitle{
+    font-weight: 700;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.headerDesc{
+    font-size: 28px;
+}
+
+.headerButton{
+    color: white;
+    background-color: #0071c2;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
