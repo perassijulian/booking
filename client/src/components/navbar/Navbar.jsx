@@ -1,15 +1,15 @@
-import './navbar.css';
+import "./navbar.css"
 
 const Navbar = () => {
   return (
-    <div className='navbar'>
-        <div className='navbarContainer'>
-            <span className='logo'>booking</span>
-            <div className='navbarItems'>
-                <button className='navbarItem'>Login</button>
-                <button className='navbarItem'>Register</button>
-            </div>
+    <div className="navbar">
+      <div className="navContainer">
+        <span className="logo">PERASSI</span>
+        <div className="navItems">
+          <button className="navButton">Register</button>
+          <button className="navButton">Login</button>
         </div>
+      </div>
     </div>
   )
 }
