@@ -6,15 +6,16 @@ import {
     getHotel,
     getHotels,
 } from "../controllers/hotel.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = Router();
 
 //CREATE
-router.post('/', createHotel)
+router.post('/', verifyAdmin, createHotel)
 //UPDATE
-router.put('/:id', updateHotel)
+router.put('/:id', verifyAdmin, updateHotel)
 //DELETE
-router.delete('/:id', removeHotel)
+router.delete('/:id', verifyAdmin, removeHotel)
 //GET
 router.get("/find/:id", getHotel);
 //GETALL
