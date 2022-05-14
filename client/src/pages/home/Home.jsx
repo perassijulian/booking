@@ -8,6 +8,9 @@ import MailList from '../../components/mailList/MailList';
 import Footer from '../../components/footer/Footer';
 
 const Home = () => {
+
+
+
   return (
     <div className='home'>
       <Navbar />  
