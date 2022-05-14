@@ -24,7 +24,7 @@ const Hotel = () => {
 
   const { data, isLoading, error } = useFetch(`/hotels/find/${id}`);
 
-  const { dates } = useContext(SearchContext);
+  const { dates, options } = useContext(SearchContext);
   
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -142,7 +142,7 @@ const Hotel = () => {
                   excellent location score of {data.rating}!
                 </span>
                 <h2>
-                  <b>${(days*data.cheapestPrice)}</b> ({days} nights)
+                  <b>${(days * data.cheapestPrice * options.room)}</b> ({days} nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
               </div>
