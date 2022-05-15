@@ -47,8 +47,12 @@ import { SearchContext } from "../../context/SearchContext";
     const { dispatch } = useContext(SearchContext);
   
     const handleSearch = () => {
-      dispatch({type: "NEW_SEARCH", payload: {destination, dates, options}})
-      navigate("/hotels", { state: { destination, dates, options } });
+      if (dates[0].startDate - dates[0].endDate === 0 ) {
+        alert('Please select at least one staying day.')
+      } else {
+        dispatch({type: "NEW_SEARCH", payload: {destination, dates, options}})
+        navigate("/hotels", { state: { destination, dates, options } });
+      }
     };
   
     return (
@@ -105,9 +109,9 @@ import { SearchContext } from "../../context/SearchContext";
                   <span
                     onClick={() => setOpenDate(!openDate)}
                     className="headerSearchText"
-                  >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                  >{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
                     dates[0].endDate,
-                    "MM/dd/yyyy"
+                    "dd/MM/yyyy"
                   )}`}</span>
                   {openDate && (
                     <DateRange

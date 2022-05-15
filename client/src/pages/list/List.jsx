@@ -2,7 +2,7 @@ import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
@@ -17,8 +17,8 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, isLoading, error, reFetch } = useFetch(`/hotels?city=${destination}&min=${min||1}&max=${max||999999}`)
-
+  const { data, isLoading, error, reFetch } = useFetch(`/hotels?city=${destination}&min=${min||1}&max=${max||999999}`);
+  
   return (
     <div>
       <Navbar />
@@ -67,6 +67,7 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.adult}
+                    onChange={e=>setOptions((prevState) => {return({...prevState, adult: e.target.value})})}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -76,6 +77,7 @@ const List = () => {
                     min={0}
                     className="lsOptionInput"
                     placeholder={options.children}
+                    onChange={e=>setOptions((prevState) => {return({...prevState, children: e.target.value})})}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -85,6 +87,7 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.room}
+                    onChange={e=>setOptions((prevState) => {return({...prevState, room: e.target.value})})}
                   />
                 </div>
               </div>

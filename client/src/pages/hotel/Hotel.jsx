@@ -12,19 +12,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
+  const navigate = useNavigate()
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
   const { data, isLoading, error } = useFetch(`/hotels/find/${id}`);
 
   const { dates, options } = useContext(SearchContext);
+  const { user } = useContext(AuthContext);
   
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -73,6 +78,11 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber)
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    !user ? navigate('/login') : setOpenModal(true);
+  }
+
   return (
     <div>
       <Navbar />
@@ -104,7 +114,7 @@ const Hotel = () => {
           "loading"
         ) : (
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -144,13 +154,14 @@ const Hotel = () => {
                 <h2>
                   <b>${(days * data.cheapestPrice * options.room)}</b> ({days} nights)
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
         )}
         <MailList />
         <Footer />
+        {openModal && <Reserve setOpen={setOpenModal} id={data._id}/>}
       </div>
     </div>
   );
