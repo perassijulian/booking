@@ -6,7 +6,8 @@ import {
 import useFetch from '../../hooks/useFetch';
 import { useContext, useState } from 'react';
 import { SearchContext } from '../../context/SearchContext';
-import axios from 'axios';
+import { axiosInstance } from '../config';
+
 
 const Reserve = ({ setOpen, id }) => {
   const { data, error, isLoading } = useFetch(`/hotels/room/${id}`);
@@ -60,7 +61,7 @@ const Reserve = ({ setOpen, id }) => {
     } else {
       await Promise.all(
         selection.map(roomId => (
-          axios.put(`/rooms/availability/${roomId}`, {dates: allDays})
+          axiosInstance.put(`/rooms/availability/${roomId}`, {dates: allDays})
         ))
       )
       setReservationDone(true);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = "https://blog-perassi.herokuapp.com/";
+const baseURL = "https://booking-perassi.herokuapp.com/";
 
 export const axiosInstance = axios.create({
     baseURL
