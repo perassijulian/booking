@@ -33,6 +33,10 @@
     gap: 5px;
     margin-bottom: 10px;
   }
+
+  .lsDestinationInput{
+    text-transform: capitalize;
+  }
   
   .lsItem>label{
     font-size: 12px;

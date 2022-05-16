@@ -7,9 +7,9 @@ const UserSchema = new mongoose.Schema(
       unique: true,
     },
     email: {
-      type: String,
-      required: true,
-      unique: true,
+     type: String,
+     required: true,
+     unique: true,
     },
     // country: {
     //   type: String,

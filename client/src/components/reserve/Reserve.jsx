@@ -4,13 +4,14 @@ import {
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import useFetch from '../../hooks/useFetch';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { SearchContext } from '../../context/SearchContext';
 import axios from 'axios';
 
 const Reserve = ({ setOpen, id }) => {
   const { data, error, isLoading } = useFetch(`/hotels/room/${id}`);
   const [selection, setSelection] = useState([]);
+  const [reservationDone, setReservationDone] = useState(false);
 
   const { dates } = useContext(SearchContext);
   
@@ -53,11 +54,17 @@ const Reserve = ({ setOpen, id }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await Promise.all(
-      selection.map(roomId => (
-        axios.put(`/rooms/availability/${roomId}`, {dates: allDays})
-      ))
-    )
+    console.log(selection)
+    if (selection.length === 0) {
+      alert('Please select a room to continue')
+    } else {
+      await Promise.all(
+        selection.map(roomId => (
+          axios.put(`/rooms/availability/${roomId}`, {dates: allDays})
+        ))
+      )
+      setReservationDone(true);
+    }
   }
   
   return (
@@ -68,6 +75,7 @@ const Reserve = ({ setOpen, id }) => {
           className="rClose"
           onClick={() => setOpen(false)}
         />
+        {!reservationDone && <>
         <span>Select your rooms:</span>
         {data.map((item) => (
           <div className="rItem" key={item._id}>
@@ -97,6 +105,9 @@ const Reserve = ({ setOpen, id }) => {
         <button onClick={handleClick} className="rButton">
           Reserve Now!
         </button>
+        </>}
+        {reservationDone && <span>Thank you for your booking! You will recieve a confirmation mail soon</span>}
+
       </div>
     </div>
   )

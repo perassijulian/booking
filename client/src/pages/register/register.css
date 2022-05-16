@@ -1,27 +1,26 @@
-.login {
+.register {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .lContainer {
+}
+
+.rContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
+}
 
-  .lContainer>span{
+.rContainer>span{
     text-align: center;
-  } 
-  
-  .lInput{
+}
+
+.rInput{
     height: 30px;
     padding: 10px;
-  }
-  
-  .lButton {
-    width: 200px;
+}
+
+.rButton {
     border: none;
     padding: 10px 20px;
     background-color: #0071c2;
@@ -29,9 +28,9 @@
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-  }
+}
 
-  .lButton:disabled{
+.rButton:disabled{
     background-color: #0071c28c;
     cursor: not-allowed;
-  }
+}

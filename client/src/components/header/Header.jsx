@@ -13,8 +13,8 @@ import {
   import "react-date-range/dist/styles.css";
   import "react-date-range/dist/theme/default.css";
   import { format } from "date-fns";
-  import { useNavigate } from "react-router-dom";
-import { SearchContext } from "../../context/SearchContext";
+  import { useNavigate, Link } from "react-router-dom";
+  import { SearchContext } from "../../context/SearchContext";
   
   const Header = ({ type }) => {
     const [destination, setDestination] = useState("");
@@ -34,6 +34,21 @@ import { SearchContext } from "../../context/SearchContext";
     });
   
     const navigate = useNavigate();
+
+    const handleCloseModals = () => {
+      setOpenDate(false);
+      setOpenOptions(false);
+    }
+
+    const handleOpenDate = () => {
+      setOpenDate(!openDate);
+      setOpenOptions(false);
+    }
+
+    const handleOpenOptions = () => {
+      setOpenOptions(!openOptions);
+      setOpenDate(false);
+    }
   
     const handleOption = (name, operation) => {
       setOptions((prev) => {
@@ -53,7 +68,7 @@ import { SearchContext } from "../../context/SearchContext";
         dispatch({type: "NEW_SEARCH", payload: {destination, dates, options}})
         navigate("/hotels", { state: { destination, dates, options } });
       }
-    };
+    };    
   
     return (
       <div className="header">
@@ -93,7 +108,9 @@ import { SearchContext } from "../../context/SearchContext";
                 Get rewarded for your travels – unlock instant savings of 10% or
                 more with a free Lamabooking account
               </p>
-              <button className="headerBtn">Sign in / Register</button>
+              <Link to='/login'>
+                <button className="headerBtn">Sign in / Register</button>
+              </Link>
               <div className="headerSearch">
                 <div className="headerSearchItem">
                   <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -102,12 +119,13 @@ import { SearchContext } from "../../context/SearchContext";
                     placeholder="Where are you going?"
                     className="headerSearchInput"
                     onChange={(e) => setDestination(e.target.value)}
+                    onClick={handleCloseModals}
                   />
                 </div>
                 <div className="headerSearchItem">
                   <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                   <span
-                    onClick={() => setOpenDate(!openDate)}
+                    onClick={handleOpenDate}
                     className="headerSearchText"
                   >{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
                     dates[0].endDate,
@@ -127,7 +145,7 @@ import { SearchContext } from "../../context/SearchContext";
                 <div className="headerSearchItem">
                   <FontAwesomeIcon icon={faPerson} className="headerIcon" />
                   <span
-                    onClick={() => setOpenOptions(!openOptions)}
+                    onClick={handleOpenOptions}
                     className="headerSearchText"
                   >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
                   {openOptions && (
