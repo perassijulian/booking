@@ -118,7 +118,7 @@ import {
                     type="text"
                     placeholder="Where are you going?"
                     className="headerSearchInput"
-                    onChange={(e) => setDestination(e.target.value)}
+                    onChange={(e) => setDestination(e.target.value.toLowerCase())}
                     onClick={handleCloseModals}
                   />
                 </div>

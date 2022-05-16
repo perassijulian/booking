@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import "./searchItem.css";
 
 const SearchItem = ({item}) => {
+  const randomIndex = Math.floor(Math.random()*item.photos.length);
   return (
     <div className="searchItem">
       <img
-        src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1"
+        src={item.photos[randomIndex]}
         alt=""
         className="siImg"
       />
@@ -15,9 +16,6 @@ const SearchItem = ({item}) => {
         <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">
           {item.title}
-        </span>
-        <span className="siFeatures">
-          {item.desc}
         </span>
         <span className="siCancelOp">Free cancellation </span>
         <span className="siCancelOpSubtitle">

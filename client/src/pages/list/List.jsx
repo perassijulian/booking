@@ -33,7 +33,7 @@ const List = () => {
               className="lsDestinationInput" 
               placeholder={destination} 
               type="text" 
-              onChange={(e) => setDestination(e.target.value)}
+              onChange={(e) => setDestination(e.target.value.toLowerCase())}
               />
             </div>
             <div className="lsItem">
